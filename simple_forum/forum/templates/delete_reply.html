@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Удаление ответа{% endblock %}
+
+{% block content %}
+    <h2>Вы уверены, что хотите удалить этот ответ?</h2>
+    <p>{{ reply.content }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+    </form>
+    <a href="{% url 'topic_detail' reply.topic.id %}">Отмена</a>
+{% endblock %}

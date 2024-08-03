@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Подтверждение {{ action }}</h2>
+    <p>Вы уверены, что хотите {{ action }} "{{ object }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Подтвердить {{ action }}</button>
+        <a href="{% url 'topic_detail' object.id %}" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
+{% endblock %}
