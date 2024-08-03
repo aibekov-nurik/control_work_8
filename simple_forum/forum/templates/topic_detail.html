@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Topics</h1>
+  <ul>
+    {% for topic in topics %}
+      <li>
+        <a href="{% url 'topic_detail' topic.id %}">
+          {{ topic.title }} - {{ topic.created_at }} by {{ topic.author.username }} ({{ topic.reply_count }} replies)
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
